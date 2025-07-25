@@ -51,6 +51,6 @@ final_df = X.copy()
 final_df['Cluster'] = cluster_labels
 final_df['PCA1'] = X_pca[:, 0]
 final_df['PCA2'] = X_pca[:, 1]
-final_df['True_Label'] = true_labels  # Optional
+final_df['True_Label'] = true_labels
 
 final_df.to_csv('dbscan_clustered_with_pca.csv', index=False)

@@ -1,12 +1,12 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
 from sklearn.metrics import classification_report, accuracy_score
+import joblib
 
 # === 1. Load dataset ===
 df = pd.read_csv(...)
@@ -60,14 +60,14 @@ print(f"Accuracy: {accuracy_score(y_test, test_preds):.2f}")
 
 # === 9. Export results ===
 # Combine train and test data for export
-train_df = pd.DataFrame(X_train, columns=iris.feature_names)
+train_df = pd.DataFrame(scaler.inverse_transform(X_train), columns=df.columns)
 train_df['True_Label'] = y_train.values
 train_df['Predicted_Label'] = train_preds
 train_df['Set'] = 'Train'
 train_df['PCA1'] = X_train_pca[:, 0]
 train_df['PCA2'] = X_train_pca[:, 1]
 
-test_df = pd.DataFrame(X_test, columns=iris.feature_names)
+test_df = pd.DataFrame(scaler.inverse_transform(X_test), columns=df.columns)
 test_df['True_Label'] = y_test.values
 test_df['Predicted_Label'] = test_preds
 test_df['Set'] = 'Test'
@@ -77,3 +77,5 @@ test_df['PCA2'] = X_test_pca[:, 1]
 final_df = pd.concat([train_df, test_df])
 final_df.to_csv('svm_classified_with_pca.csv', index=False)
 
+# Save model
+joblib.dump(svm, 'svm_model.pkl')

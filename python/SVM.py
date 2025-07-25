@@ -8,10 +8,10 @@ from sklearn.svm import SVC
 from sklearn.decomposition import PCA
 from sklearn.metrics import classification_report, accuracy_score
 
-# === 1. Load dataset (replace with your CSV as needed) ===
-iris = load_iris()
-X = pd.DataFrame(iris.data, columns=iris.feature_names)
-y = pd.Series(iris.target, name='True_Label')
+# === 1. Load dataset ===
+df = pd.read_csv(...)
+X = df[:,:10]
+y = df[:,11]
 
 # === 2. Standardize features ===
 scaler = StandardScaler()
@@ -21,7 +21,7 @@ X_scaled = scaler.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
 # === 4. Train SVM classifier ===
-svm = SVC(kernel='rbf', C=1.0, gamma='scale')  # You can also use 'linear'
+svm = SVC(kernel='rbf', C=1.0, gamma='scale')
 svm.fit(X_train, y_train)
 
 # === 5. Predict on train/test ===
@@ -77,4 +77,3 @@ test_df['PCA2'] = X_test_pca[:, 1]
 final_df = pd.concat([train_df, test_df])
 final_df.to_csv('svm_classified_with_pca.csv', index=False)
 
-print("✅ Exported: 'svm_classified_with_pca.csv'")

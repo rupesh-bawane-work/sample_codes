@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
 from sklearn.cluster import DBSCAN
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -26,7 +25,7 @@ cluster_labels = dbscan.fit_predict(X_scaled)
 # Check number of clusters (excluding noise label -1)
 n_clusters = len(set(cluster_labels)) - (1 if -1 in cluster_labels else 0)
 n_noise = list(cluster_labels).count(-1)
-print(f"✅ DBSCAN found {n_clusters} clusters and {n_noise} noise points.")
+print(f"DBSCAN found {n_clusters} clusters and {n_noise} noise points.")
 
 # === 5. Visualize DBSCAN results (PCA-reduced) ===
 plt.figure(figsize=(8, 5))

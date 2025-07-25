@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
@@ -9,9 +8,9 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, classification_report
 
 # === 1. Load dataset ===
-iris = load_iris()
-X = pd.DataFrame(iris.data, columns=iris.feature_names)
-y = pd.Series(iris.target, name='True_Label')
+df = pd.read_csv(...)
+X = df[:,:10]
+y = df[:,11]
 
 # === 2. Standardize features ===
 scaler = StandardScaler()

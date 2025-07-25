@@ -9,9 +9,9 @@ from sklearn.decomposition import PCA
 from sklearn.metrics import accuracy_score, classification_report
 
 # === 1. Load dataset ===
-iris = load_iris()
-X = pd.DataFrame(iris.data, columns=iris.feature_names)
-y = pd.Series(iris.target, name='True_Label')
+df = pd.read_csv(...)
+X = df[:,:10]
+y = df[:,11]
 
 # === 2. Standardize features ===
 scaler = StandardScaler()
@@ -55,9 +55,9 @@ plt.grid(True)
 plt.show()
 
 # === 8. Evaluate ===
-print("📊 Classification Report (Test Set):")
+print("Classification Report (Test Set):")
 print(classification_report(y_test, test_preds))
-print(f"✅ Accuracy: {accuracy_score(y_test, test_preds):.2f}")
+print(f"Accuracy: {accuracy_score(y_test, test_preds):.2f}")
 
 # === 9. Export results ===
 train_df = pd.DataFrame(X_train, columns=iris.feature_names)
@@ -77,4 +77,4 @@ test_df['PCA2'] = X_test_pca[:, 1]
 final_df = pd.concat([train_df, test_df])
 final_df.to_csv('random_forest_classified_with_pca.csv', index=False)
 
-print("✅ Exported to 'random_forest_classified_with_pca.csv'")
+print("Exported to 'random_forest_classified_with_pca.csv'")

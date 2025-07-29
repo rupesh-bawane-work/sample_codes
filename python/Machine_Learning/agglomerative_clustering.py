@@ -8,8 +8,8 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 
 # === 1. Load dataset ===
 df = pd.read_csv(...)
-X = df[:,:10]
-true_labels = df[:,11]
+X = df.iloc[:,:10]
+true_labels = df.iloc[:,11]
 
 # === 2. PCA for 2D visualization ===
 pca = PCA(n_components=2)

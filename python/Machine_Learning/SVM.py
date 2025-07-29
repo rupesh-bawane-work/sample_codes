@@ -10,8 +10,8 @@ import joblib
 
 # === 1. Load dataset ===
 df = pd.read_csv(...)
-X = df[:,:10]
-y = df[:,11]
+X = df.iloc[:,:10]
+y = df.iloc[:,11]
 
 # === 2. Standardize features ===
 scaler = StandardScaler()
@@ -60,14 +60,14 @@ print(f"Accuracy: {accuracy_score(y_test, test_preds):.2f}")
 
 # === 9. Export results ===
 # Combine train and test data for export
-train_df = pd.DataFrame(scaler.inverse_transform(X_train), columns=df.columns)
+train_df = pd.DataFrame(scaler.inverse_transform(X_train), columns=X.columns)
 train_df['True_Label'] = y_train.values
 train_df['Predicted_Label'] = train_preds
 train_df['Set'] = 'Train'
 train_df['PCA1'] = X_train_pca[:, 0]
 train_df['PCA2'] = X_train_pca[:, 1]
 
-test_df = pd.DataFrame(scaler.inverse_transform(X_test), columns=df.columns)
+test_df = pd.DataFrame(scaler.inverse_transform(X_test), columns=X.columns)
 test_df['True_Label'] = y_test.values
 test_df['Predicted_Label'] = test_preds
 test_df['Set'] = 'Test'

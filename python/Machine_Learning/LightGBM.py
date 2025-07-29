@@ -9,8 +9,8 @@ import lightgbm as lgb
 
 # === 1. Load dataset ===
 df = pd.read_csv(...)
-X = df[:,:10]
-y = df[:,11]
+X = df.iloc[:,:10]
+y = df.iloc[:,11]
 
 # === 2. Standardize features ===
 scaler = StandardScaler()

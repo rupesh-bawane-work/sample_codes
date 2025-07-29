@@ -59,14 +59,14 @@ print(classification_report(y_test, test_preds))
 print(f"Accuracy: {accuracy_score(y_test, test_preds):.2f}")
 
 # === 9. Export to CSV ===
-train_df = X_train
+train_df = pd.DataFrame(X_train, columns=X.feature_names)
 train_df['True_Label'] = y_train.values
 train_df['Predicted_Label'] = train_preds
 train_df['Set'] = 'Train'
 train_df['PCA1'] = X_train_pca[:, 0]
 train_df['PCA2'] = X_train_pca[:, 1]
 
-test_df = X_test
+test_df = pd.DataFrame(X_test, columns=X.feature_names)
 test_df['True_Label'] = y_test.values
 test_df['Predicted_Label'] = test_preds
 test_df['Set'] = 'Test'

@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier, plot_tree
@@ -60,14 +59,14 @@ print(classification_report(y_test, test_preds))
 print(f"Accuracy: {accuracy_score(y_test, test_preds):.2f}")
 
 # === 9. Export Results to CSV ===
-train_df = pd.DataFrame(X_train, columns=iris.feature_names)
+train_df = pd.DataFrame(X_train, columns=X.columns)
 train_df['True_Label'] = y_train.values
 train_df['Predicted_Label'] = train_preds
 train_df['Set'] = 'Train'
 train_df['PCA1'] = X_train_pca[:, 0]
 train_df['PCA2'] = X_train_pca[:, 1]
 
-test_df = pd.DataFrame(X_test, columns=iris.feature_names)
+test_df = pd.DataFrame(X_test, columns=X.columns)
 test_df['True_Label'] = y_test.values
 test_df['Predicted_Label'] = test_preds
 test_df['Set'] = 'Test'

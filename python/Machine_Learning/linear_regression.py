@@ -9,8 +9,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 # === 1. Load regression dataset ===
 df = pd.read_csv(...)
-X = df[:,:10]
-y = df[:,11]
+X = df.iloc[:,:10]
+y = df.iloc[:,11]
 
 # === 2. Standardize features ===
 scaler = StandardScaler()
@@ -52,14 +52,14 @@ print(f"R² Score: {r2_score(y_test, test_preds):.2f}")
 
 # === 9. Export results to CSV ===
 # Combine for export
-train_df = pd.DataFrame(X_train, columns=data.feature_names)
+train_df = pd.DataFrame(scaler.inverse_transform(X_train), columns=X.columns)
 train_df['Target'] = y_train.values
 train_df['Predicted'] = train_preds
 train_df['Set'] = 'Train'
 train_df['PCA1'] = X_train_pca[:, 0]
 train_df['PCA2'] = X_train_pca[:, 1]
 
-test_df = pd.DataFrame(X_test, columns=data.feature_names)
+test_df = pd.DataFrame(scaler.inverse_transform(X_test), columns=X.columns)
 test_df['Target'] = y_test.values
 test_df['Predicted'] = test_preds
 test_df['Set'] = 'Test'

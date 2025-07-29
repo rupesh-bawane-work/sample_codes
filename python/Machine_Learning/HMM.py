@@ -7,6 +7,8 @@ from sklearn.preprocessing import StandardScaler
 
 # === 1. Create or load sequential data ===
 df = pd.read_csv(...)
+X = df[:,:10]
+y = df[:,11]
 
 # === 2. Standardize data ===
 scaler = StandardScaler()

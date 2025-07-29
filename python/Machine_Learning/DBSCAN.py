@@ -7,8 +7,8 @@ from sklearn.preprocessing import StandardScaler
 
 # === 1. Load dataset ===
 df = pd.read_csv(...)
-X = df[:,:10]
-true_labels = df[:,11]
+X = df.iloc[:,:10]
+true_labels = df.iloc[:,11]
 
 # === 2. Standardize the features ===
 scaler = StandardScaler()

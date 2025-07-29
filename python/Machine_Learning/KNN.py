@@ -77,7 +77,7 @@ plt.show()
 # === 8. Export results to CSV ===
 
 # Train DataFrame
-train_df = X_train.copy()
+train_df = pd.DataFrame(X_train, columns=X.columns)
 train_df['True_Label'] = y_train.values
 train_df['Predicted_Label'] = train_preds
 train_df['Set'] = 'Train'
@@ -85,7 +85,7 @@ train_df['PCA1'] = X_train_pca[:, 0]
 train_df['PCA2'] = X_train_pca[:, 1]
 
 # Test DataFrame
-test_df = X_test.copy()
+test_df = pd.DataFrame(X_test, columns=X.columns)
 test_df['True_Label'] = y_test.values
 test_df['Predicted_Label'] = test_preds
 test_df['Set'] = 'Test'

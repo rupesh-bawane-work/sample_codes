@@ -4,10 +4,11 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
-from sklearn.datasets import load_iris
 
 # === 1. Load dataset ===
 X = pd.read_csv(...)
+X = df[:,:10]
+y = df[:,11]
 
 # === 2. Split into train and test ===
 X_train, X_test = train_test_split(X, test_size=0.2, random_state=42)

@@ -72,11 +72,11 @@ plt.show()
 # === 7. Export Results ===
 
 # Create full labeled DataFrame
-train_df = X_train.copy()
+train_df = pd.DataFrame(X_train, columns=X.columns)
 train_df['Cluster'] = train_labels
 train_df['Set'] = 'Train'
 
-test_df = X_test.copy()
+test_df = pd.DataFrame(X_test, columns=X.columns)
 test_df['Cluster'] = test_labels
 test_df['Set'] = 'Test'
 

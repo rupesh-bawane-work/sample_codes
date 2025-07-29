@@ -7,8 +7,8 @@ from sklearn.decomposition import PCA
 
 # === 1. Load dataset ===
 X = pd.read_csv(...)
-X = df[:,:10]
-y = df[:,11]
+X = df.iloc[:,:10]
+y = df.iloc[:,11]
 
 # === 2. Split into train and test ===
 X_train, X_test = train_test_split(X, test_size=0.2, random_state=42)
